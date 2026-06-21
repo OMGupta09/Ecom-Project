@@ -4,6 +4,7 @@ import com.oglearning.Ecom_Project.Model.Product;
 import com.oglearning.Ecom_Project.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -33,9 +34,10 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public Product createProduct(@RequestBody Product product)
+    public Product createProduct(@RequestPart Product product,
+                                 @RequestPart MultipartFile imageFile)
     {
-        return service.createProduct(product);
+        return service.createProduct(product,imageFile);
     }
 
     @PutMapping("/products")
